@@ -7,6 +7,8 @@ namespace Valdese
 
 	class BaseComponent
 	{
+		friend class GameObject;
+
 	public:
 		BaseComponent(const BaseComponent& other) = delete;
 		BaseComponent(BaseComponent&& other) noexcept = delete;
@@ -17,6 +19,7 @@ namespace Valdese
 
 		GameObject* GetGameObject() const { return m_pGameObject; }
 		TransformComponent* GetTransform() const;
+
 
 	protected:
 

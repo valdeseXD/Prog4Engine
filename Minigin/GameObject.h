@@ -23,7 +23,40 @@ namespace Valdese
 
 		TransformComponent* GetTransform() const { return m_pTransformComponent; }
 
+
+		//COMPONENTS
+
+		void AddComponent(BaseComponent* pComp);
+		void RemoveComponent(BaseComponent* pComp);
+
+		template <class T>
+		bool HasComponent()
+		{
+			return GetComponent<T>();
+		}
+
+		template <class T>
+		T* GetComponent()
+		{
+			for (auto* component in m_pComponents)
+			{
+				if (component == T)
+				{
+					return component;
+				}
+			}
+			//const type_info& ti = typeid(T);
+			//for (auto* component : m_pComponents)
+			//{
+			//	if (component && typeid(*component) == ti)
+			//		return static_cast<T*>(component);
+			//}
+			return nullptr;
+		}
+
 	private:
+		std::vector<BaseComponent*> m_pComponents;
+
 		TransformComponent* m_pTransformComponent;
 		std::shared_ptr<Texture2D> m_Texture{};
 	};
