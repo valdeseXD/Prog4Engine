@@ -7,15 +7,16 @@
 
 namespace Valdese
 {
-	class TransformComponent final : public BaseComponent
+	class TransformComponent : public BaseComponent
 	{
 	public:
-		const glm::vec2& GetPosition() const { return m_Position; }
+		TransformComponent(glm::vec2 position = { 0,0 });
+		glm::vec2& GetPosition() { return m_Position; }
 		void SetPosition(float x, float y);
 
 		void Initialize();
-		void Update() = 0;
-		void Draw() = 0;
+		void Update();
+		void Draw();
 
 	private:
 		glm::vec2 m_Position;

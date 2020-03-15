@@ -2,6 +2,8 @@
 #include "GameObject.h"
 #include "ResourceManager.h"
 #include "Renderer.h"
+#include "RenderComponent.h"
+
 
 Valdese::GameObject::GameObject()
 {
@@ -12,6 +14,12 @@ Valdese::GameObject::~GameObject()
 {
 	delete m_pTransformComponent;
 	m_pTransformComponent = nullptr;
+
+	for (BaseComponent* pComp : m_pComponents)
+	{
+		delete pComp;
+	}
+
 }
 
 void Valdese::GameObject::AddComponent(BaseComponent* pComp)
@@ -40,17 +48,20 @@ void Valdese::GameObject::RemoveComponent(BaseComponent* pComp)
 	pComp->m_pGameObject = nullptr;
 }
 
-void Valdese::GameObject::Update(){}
-
-void Valdese::GameObject::Render() const
+void Valdese::GameObject::Update()
 {
-	const auto pos = m_pTransformComponent->GetPosition();
-	Renderer::GetInstance().RenderTexture(*m_Texture, pos.x, pos.y);
+	for (BaseComponent* pComp : m_pComponents)
+	{
+		pComp->Update();
+	}
 }
 
-void Valdese::GameObject::SetTexture(const std::string& filename)
+void Valdese::GameObject::Draw() const
 {
-	m_Texture = ResourceManager::GetInstance().LoadTexture(filename);
+	for (BaseComponent* pComp : m_pComponents)
+	{
+		pComp->Draw();
+	}
 }
 
 void Valdese::GameObject::SetPosition(float x, float y)

@@ -10,6 +10,8 @@
 #include "TextObject.h"
 #include "GameObject.h"
 #include "Scene.h"
+#include "RenderComponent.h"
+#include "TextComponent.h"
 
 using namespace std;
 using namespace std::chrono;
@@ -44,19 +46,29 @@ void Valdese::Minigin::LoadGame() const
 {
 	auto& scene = SceneManager::GetInstance().CreateScene("Demo");
 
-	auto go = std::make_shared<GameObject>();
-	go->SetTexture("background.jpg");
-	scene.Add(go);
+	GameObject* go = new GameObject();
+	go->AddComponent(new RenderComponent());
+	go->GetComponent<RenderComponent>()->SetTexture("background.jpg");
+	scene.Add(*go);
 
-	go = std::make_shared<GameObject>();
-	go->SetTexture("logo.png");
-	go->SetPosition(216, 180);
-	scene.Add(go);
+	go = new GameObject();
+	go->AddComponent(new RenderComponent());
+	go->GetComponent<RenderComponent>()->SetTexture("logo.png");
+	go->GetTransform()->SetPosition(216, 180);
+	scene.Add(*go);
 
+	go = new GameObject();
 	auto font = ResourceManager::GetInstance().LoadFont("Lingua.otf", 36);
-	auto to = std::make_shared<TextObject>("Programming 4 Assignment", font);
-	to->SetPosition(80, 20);
-	scene.Add(to);
+	auto textComp = new TextComponent("Programming 4 Assignment", font);
+	go->AddComponent(textComp);
+	go->GetTransform()->SetPosition(80, 20);
+	scene.Add(*go);
+
+	go = new GameObject();
+	textComp = new TextComponent("FPS: ", font);
+	go->AddComponent(textComp);
+	go->GetTransform()->SetPosition(0, 80);
+	scene.Add(*go);
 }
 
 void Valdese::Minigin::Cleanup()

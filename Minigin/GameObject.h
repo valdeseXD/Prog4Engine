@@ -9,9 +9,8 @@ namespace Valdese
 	{
 	public:
 		void Update() override;
-		void Render() const override;
+		void Draw() const override;
 
-		void SetTexture(const std::string& filename);
 		void SetPosition(float x, float y);
 
 		GameObject();
@@ -38,19 +37,19 @@ namespace Valdese
 		template <class T>
 		T* GetComponent()
 		{
-			for (auto* component in m_pComponents)
-			{
-				if (component == T)
-				{
-					return component;
-				}
-			}
-			//const type_info& ti = typeid(T);
-			//for (auto* component : m_pComponents)
+			//for (auto* component in m_pComponents)
 			//{
-			//	if (component && typeid(*component) == ti)
-			//		return static_cast<T*>(component);
+			//	if (component == T)
+			//	{
+			//		return component;
+			//	}
 			//}
+			const type_info& ti = typeid(T);
+			for (auto* component : m_pComponents)
+			{
+				if (component && typeid(*component) == ti)
+					return static_cast<T*>(component);
+			}
 			return nullptr;
 		}
 
@@ -58,6 +57,5 @@ namespace Valdese
 		std::vector<BaseComponent*> m_pComponents;
 
 		TransformComponent* m_pTransformComponent;
-		std::shared_ptr<Texture2D> m_Texture{};
 	};
 }

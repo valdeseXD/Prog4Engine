@@ -5,14 +5,20 @@
 
 namespace Valdese
 {
+	class Texture2D;
+	class Font;
+
 	class RenderComponent : public BaseComponent
 	{
-		void Initialize() = 0;
-		void Update() = 0;
-		void Draw() = 0;
+	public:
+		void Initialize();
+		void Update();
+		void Draw();
 
+		void SetTexture(const std::string& filename);
+		void SetPosition(float x, float y);
 	private:
-
+		Texture2D* m_pTexture;
 	};
 }
 

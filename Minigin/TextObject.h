@@ -10,7 +10,7 @@ namespace Valdese
 	{
 	public:
 		void Update() override;
-		void Render() const override;
+		void Draw() const override;
 
 		void SetText(const std::string& text);
 		void SetPosition(float x, float y);
@@ -24,7 +24,7 @@ namespace Valdese
 	private:
 		bool m_NeedsUpdate;
 		std::string m_Text;
-		TransformComponent m_TransformComponent;
+		TransformComponent m_pTransformComponent;
 		std::shared_ptr<Font> m_Font;
 		std::shared_ptr<Texture2D> m_Texture;
 	};

@@ -10,9 +10,9 @@ Scene::Scene(const std::string& name) : m_Name(name) {}
 
 Scene::~Scene() = default;
 
-void Scene::Add(const std::shared_ptr<SceneObject>& object)
+void Valdese::Scene::Add(SceneObject& object)
 {
-	m_Objects.push_back(object);
+	m_Objects.push_back(&object);
 }
 
 void Scene::Update()
@@ -27,7 +27,7 @@ void Scene::Render() const
 {
 	for (const auto& object : m_Objects)
 	{
-		object->Render();
+		object->Draw();
 	}
 }
 
