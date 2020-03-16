@@ -15,11 +15,11 @@ void Valdese::Scene::Add(SceneObject& object)
 	m_Objects.push_back(&object);
 }
 
-void Scene::Update()
+void Scene::Update(float elapsedSec)
 {
 	for(auto& object : m_Objects)
 	{
-		object->Update();
+		object->Update(elapsedSec);
 	}
 }
 

@@ -4,12 +4,18 @@
 #include "Renderer.h"
 #include "TransformComponent.h"
 
+Valdese::RenderComponent::RenderComponent()
+	:m_pTexture()
+{
+}
+
 void Valdese::RenderComponent::Initialize()
 {
 }
 
-void Valdese::RenderComponent::Update()
+void Valdese::RenderComponent::Update(float elapsedSec)
 {
+	UNREFERENCED_PARAMETER(elapsedSec);
 }
 
 void Valdese::RenderComponent::Draw()

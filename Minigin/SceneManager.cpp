@@ -2,17 +2,17 @@
 #include "SceneManager.h"
 #include "Scene.h"
 
-void Valdese::SceneManager::Update()
+void Valdese::SceneManager::Update(float elapsedSec)
 {
-	for(auto& scene : m_Scenes)
+	for(auto& scene : m_pScenes)
 	{
-		scene->Update();
+		scene->Update(elapsedSec);
 	}
 }
 
 void Valdese::SceneManager::Render()
 {
-	for (const auto& scene : m_Scenes)
+	for (const auto& scene : m_pScenes)
 	{
 		scene->Render();
 	}
@@ -20,7 +20,21 @@ void Valdese::SceneManager::Render()
 
 Valdese::Scene& Valdese::SceneManager::CreateScene(const std::string& name)
 {
-	const auto scene = std::shared_ptr<Scene>(new Scene(name));
-	m_Scenes.push_back(scene);
+	const auto scene = new Scene(name);
+	m_pScenes.push_back(scene);
 	return *scene;
 }
+
+void Valdese::SceneManager::AddScene(Scene* pScene)
+{
+	if (pScene)
+	{
+		m_pScenes.push_back(pScene);
+	}
+	else
+	{
+		throw("scene was a nullpoiter");
+	}
+}
+
+

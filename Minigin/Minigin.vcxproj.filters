@@ -20,18 +20,15 @@
     <Filter Include="Base">
       <UniqueIdentifier>{2a2a67b9-2851-44a4-be68-23dac144023f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Objects">
+      <UniqueIdentifier>{c6c12d3b-3071-4220-bb8c-10e013bb462e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SceneManagment">
+      <UniqueIdentifier>{b6d61626-6ca0-4685-927c-6ca2f24d1adb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ResourceManager.h">
-      <Filter>Managers</Filter>
-    </ClInclude>
-    <ClInclude Include="Scene.h">
-      <Filter>Scenes</Filter>
-    </ClInclude>
-    <ClInclude Include="SceneObject.h">
-      <Filter>Scenes</Filter>
-    </ClInclude>
-    <ClInclude Include="SceneManager.h">
       <Filter>Managers</Filter>
     </ClInclude>
     <ClInclude Include="Renderer.h">
@@ -49,9 +46,6 @@
     <ClInclude Include="Font.h">
       <Filter>Graphics</Filter>
     </ClInclude>
-    <ClInclude Include="TextObject.h">
-      <Filter>Graphics</Filter>
-    </ClInclude>
     <ClInclude Include="Singleton.h">
       <Filter>Base</Filter>
     </ClInclude>
@@ -64,14 +58,29 @@
     <ClInclude Include="BaseComponent.h">
       <Filter>Components</Filter>
     </ClInclude>
-    <ClInclude Include="GameObject.h">
-      <Filter>Scenes</Filter>
-    </ClInclude>
     <ClInclude Include="RenderComponent.h">
       <Filter>Components</Filter>
     </ClInclude>
     <ClInclude Include="TextComponent.h">
       <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="FPSComponent.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneManager.h">
+      <Filter>SceneManagment</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneObject.h">
+      <Filter>SceneManagment</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>SceneManagment</Filter>
+    </ClInclude>
+    <ClInclude Include="DemoScene.h">
+      <Filter>Scenes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -80,9 +89,6 @@
     </ClCompile>
     <ClCompile Include="Minigin.cpp">
       <Filter>Base</Filter>
-    </ClCompile>
-    <ClCompile Include="Scene.cpp">
-      <Filter>Scenes</Filter>
     </ClCompile>
     <ClCompile Include="Texture2D.cpp">
       <Filter>Graphics</Filter>
@@ -93,17 +99,11 @@
     <ClCompile Include="ResourceManager.cpp">
       <Filter>Managers</Filter>
     </ClCompile>
-    <ClCompile Include="SceneManager.cpp">
-      <Filter>Managers</Filter>
-    </ClCompile>
     <ClCompile Include="MiniginPCH.cpp">
       <Filter>Base</Filter>
     </ClCompile>
     <ClCompile Include="InputManager.cpp">
       <Filter>Managers</Filter>
-    </ClCompile>
-    <ClCompile Include="TextObject.cpp">
-      <Filter>Graphics</Filter>
     </ClCompile>
     <ClCompile Include="Font.cpp">
       <Filter>Graphics</Filter>
@@ -114,14 +114,26 @@
     <ClCompile Include="BaseComponent.cpp">
       <Filter>Components</Filter>
     </ClCompile>
-    <ClCompile Include="GameObject.cpp">
-      <Filter>Scenes</Filter>
-    </ClCompile>
     <ClCompile Include="RenderComponent.cpp">
       <Filter>Components</Filter>
     </ClCompile>
     <ClCompile Include="TextComponent.cpp">
       <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="FPSComponent.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneManager.cpp">
+      <Filter>SceneManagment</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>SceneManagment</Filter>
+    </ClCompile>
+    <ClCompile Include="DemoScene.cpp">
+      <Filter>Scenes</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

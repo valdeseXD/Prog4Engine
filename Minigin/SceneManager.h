@@ -8,12 +8,12 @@ namespace Valdese
 	{
 	public:
 		Scene& CreateScene(const std::string& name);
-
-		void Update();
+		void AddScene(Scene* pScene);
+		void Update(float elapsedSec);
 		void Render();
 	private:
 		friend class Singleton<SceneManager>;
 		SceneManager() = default;
-		std::vector<std::shared_ptr<Scene>> m_Scenes;
+		std::vector<Scene*> m_pScenes;
 	};
 }

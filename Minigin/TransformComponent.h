@@ -15,7 +15,7 @@ namespace Valdese
 		void SetPosition(float x, float y);
 
 		void Initialize();
-		void Update();
+		void Update(float elapsedSec);
 		void Draw();
 
 	private:

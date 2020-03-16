@@ -8,7 +8,7 @@ namespace Valdese
 	class GameObject : public SceneObject
 	{
 	public:
-		void Update() override;
+		void Update(float elapsedSec) override;
 		void Draw() const override;
 
 		void SetPosition(float x, float y);

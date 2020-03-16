@@ -10,7 +10,7 @@ namespace Valdese
 	public:
 		void Add(SceneObject& object);
 
-		void Update();
+		void Update(float elapsedSec);
 		void Render() const;
 
 		~Scene();

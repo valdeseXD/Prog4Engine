@@ -16,8 +16,10 @@ void Valdese::TransformComponent::Initialize()
 {
 }
 
-void Valdese::TransformComponent::Update()
+void Valdese::TransformComponent::Update(float elapsedSec)
 {
+	UNREFERENCED_PARAMETER(elapsedSec);
+
 }
 
 void Valdese::TransformComponent::Draw()

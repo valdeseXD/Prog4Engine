@@ -7,11 +7,10 @@
 #include "Renderer.h"
 #include "ResourceManager.h"
 #include <SDL.h>
-#include "TextObject.h"
 #include "GameObject.h"
 #include "Scene.h"
-#include "RenderComponent.h"
-#include "TextComponent.h"
+#include "DemoScene.h"
+
 
 using namespace std;
 using namespace std::chrono;
@@ -44,31 +43,10 @@ void Valdese::Minigin::Initialize()
  */
 void Valdese::Minigin::LoadGame() const
 {
-	auto& scene = SceneManager::GetInstance().CreateScene("Demo");
+	//auto& scene = SceneManager::GetInstance().CreateScene("Demo");
 
-	GameObject* go = new GameObject();
-	go->AddComponent(new RenderComponent());
-	go->GetComponent<RenderComponent>()->SetTexture("background.jpg");
-	scene.Add(*go);
 
-	go = new GameObject();
-	go->AddComponent(new RenderComponent());
-	go->GetComponent<RenderComponent>()->SetTexture("logo.png");
-	go->GetTransform()->SetPosition(216, 180);
-	scene.Add(*go);
-
-	go = new GameObject();
-	auto font = ResourceManager::GetInstance().LoadFont("Lingua.otf", 36);
-	auto textComp = new TextComponent("Programming 4 Assignment", font);
-	go->AddComponent(textComp);
-	go->GetTransform()->SetPosition(80, 20);
-	scene.Add(*go);
-
-	go = new GameObject();
-	textComp = new TextComponent("FPS: ", font);
-	go->AddComponent(textComp);
-	go->GetTransform()->SetPosition(0, 80);
-	scene.Add(*go);
+	SceneManager::GetInstance().AddScene(new DemoScene("DemoScene"));
 }
 
 void Valdese::Minigin::Cleanup()
@@ -94,12 +72,13 @@ void Valdese::Minigin::Run()
 		auto& input = InputManager::GetInstance();
 
 		bool doContinue = true;
+		auto lastTime = std::chrono::high_resolution_clock::now();
 		while (doContinue)
 		{
 			const auto currentTime = high_resolution_clock::now();
-			
+			float deltaTime = std::chrono::duration<float>(currentTime - lastTime).count();
 			doContinue = input.ProcessInput();
-			sceneManager.Update();
+			sceneManager.Update(deltaTime);
 			renderer.Render();
 			
 			auto sleepTime = duration_cast<duration<float>>(currentTime + milliseconds(MsPerFrame) - high_resolution_clock::now());

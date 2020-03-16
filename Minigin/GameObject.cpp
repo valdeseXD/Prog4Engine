@@ -48,11 +48,11 @@ void Valdese::GameObject::RemoveComponent(BaseComponent* pComp)
 	pComp->m_pGameObject = nullptr;
 }
 
-void Valdese::GameObject::Update()
+void Valdese::GameObject::Update(float elapsedSec)
 {
 	for (BaseComponent* pComp : m_pComponents)
 	{
-		pComp->Update();
+		pComp->Update(elapsedSec);
 	}
 }
 

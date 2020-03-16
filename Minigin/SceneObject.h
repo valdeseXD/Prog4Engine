@@ -4,7 +4,7 @@ namespace Valdese
 	class SceneObject
 	{
 	public:
-		virtual void Update() = 0;
+		virtual void Update(float elapsedSec) = 0;
 		virtual void Draw() const = 0;
 
 		SceneObject() = default;

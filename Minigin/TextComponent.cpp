@@ -21,8 +21,10 @@ void Valdese::TextComponent::Initialize()
 {
 }
 
-void Valdese::TextComponent::Update()
+void Valdese::TextComponent::Update(float elapsedSec)
 {
+	UNREFERENCED_PARAMETER(elapsedSec);
+
 	if (m_NeedsUpdate)
 	{
 		const SDL_Color color = { 255,255,255 }; // only white text is supported now
