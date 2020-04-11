@@ -14,17 +14,17 @@
     <Filter Include="Managers">
       <UniqueIdentifier>{24ee4f3a-6650-4e02-b98c-f0ad4ac00cd5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Scenes">
-      <UniqueIdentifier>{fd5746ab-03fb-4e9e-a106-bd652a62dd98}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Base">
-      <UniqueIdentifier>{2a2a67b9-2851-44a4-be68-23dac144023f}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Objects">
       <UniqueIdentifier>{c6c12d3b-3071-4220-bb8c-10e013bb462e}</UniqueIdentifier>
     </Filter>
     <Filter Include="SceneManagment">
       <UniqueIdentifier>{b6d61626-6ca0-4685-927c-6ca2f24d1adb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Math">
+      <UniqueIdentifier>{1200feb5-a086-4261-82c2-b12037e86960}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Base">
+      <UniqueIdentifier>{ab741c41-b3e1-4907-904c-8dd45dcca6ac}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -37,17 +37,8 @@
     <ClInclude Include="Texture2D.h">
       <Filter>Graphics</Filter>
     </ClInclude>
-    <ClInclude Include="Minigin.h">
-      <Filter>Base</Filter>
-    </ClInclude>
-    <ClInclude Include="MiniginPCH.h">
-      <Filter>Base</Filter>
-    </ClInclude>
     <ClInclude Include="Font.h">
       <Filter>Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="Singleton.h">
-      <Filter>Base</Filter>
     </ClInclude>
     <ClInclude Include="InputManager.h">
       <Filter>Managers</Filter>
@@ -79,17 +70,20 @@
     <ClInclude Include="Scene.h">
       <Filter>SceneManagment</Filter>
     </ClInclude>
-    <ClInclude Include="DemoScene.h">
-      <Filter>Scenes</Filter>
+    <ClInclude Include="vector2.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Singleton.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Minigin.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="MiniginPCH.h">
+      <Filter>Base</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Main.cpp">
-      <Filter>Base</Filter>
-    </ClCompile>
-    <ClCompile Include="Minigin.cpp">
-      <Filter>Base</Filter>
-    </ClCompile>
     <ClCompile Include="Texture2D.cpp">
       <Filter>Graphics</Filter>
     </ClCompile>
@@ -98,9 +92,6 @@
     </ClCompile>
     <ClCompile Include="ResourceManager.cpp">
       <Filter>Managers</Filter>
-    </ClCompile>
-    <ClCompile Include="MiniginPCH.cpp">
-      <Filter>Base</Filter>
     </ClCompile>
     <ClCompile Include="InputManager.cpp">
       <Filter>Managers</Filter>
@@ -132,8 +123,14 @@
     <ClCompile Include="Scene.cpp">
       <Filter>SceneManagment</Filter>
     </ClCompile>
-    <ClCompile Include="DemoScene.cpp">
-      <Filter>Scenes</Filter>
+    <ClCompile Include="vector2.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Minigin.cpp">
+      <Filter>Base</Filter>
+    </ClCompile>
+    <ClCompile Include="MiniginPCH.cpp">
+      <Filter>Base</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

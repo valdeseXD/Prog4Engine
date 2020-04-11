@@ -10,7 +10,8 @@ namespace Valdese
 	public:
 		void Add(SceneObject& object);
 
-		void Update(float elapsedSec);
+
+		virtual void Update(float elapsedSec);
 		void Render() const;
 
 		~Scene();
@@ -19,7 +20,7 @@ namespace Valdese
 		Scene& operator=(const Scene& other) = delete;
 		Scene& operator=(Scene&& other) = delete;
 
-	private: 
+	protected: 
 		explicit Scene(const std::string& name);
 
 		std::string m_Name;

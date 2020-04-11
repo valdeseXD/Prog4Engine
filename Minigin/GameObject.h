@@ -37,13 +37,6 @@ namespace Valdese
 		template <class T>
 		T* GetComponent()
 		{
-			//for (auto* component in m_pComponents)
-			//{
-			//	if (component == T)
-			//	{
-			//		return component;
-			//	}
-			//}
 			const type_info& ti = typeid(T);
 			for (auto* component : m_pComponents)
 			{

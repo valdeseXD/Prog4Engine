@@ -9,7 +9,7 @@
 #include <SDL.h>
 #include "GameObject.h"
 #include "Scene.h"
-#include "DemoScene.h"
+#include "../Game/DemoScene.h"
 
 
 using namespace std;
@@ -44,9 +44,10 @@ void Valdese::Minigin::Initialize()
 void Valdese::Minigin::LoadGame() const
 {
 	//auto& scene = SceneManager::GetInstance().CreateScene("Demo");
+	//SceneManager::GetInstance().AddScene(&scene);
 
 
-	SceneManager::GetInstance().AddScene(new DemoScene("DemoScene"));
+	SceneManager::GetInstance().AddScene(new DemoScene());
 }
 
 void Valdese::Minigin::Cleanup()
@@ -80,9 +81,11 @@ void Valdese::Minigin::Run()
 			doContinue = input.ProcessInput();
 			sceneManager.Update(deltaTime);
 			renderer.Render();
-			
+
 			auto sleepTime = duration_cast<duration<float>>(currentTime + milliseconds(MsPerFrame) - high_resolution_clock::now());
 			this_thread::sleep_for(sleepTime);
+
+			lastTime = currentTime;
 		}
 	}
 
