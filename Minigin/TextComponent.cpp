@@ -17,6 +17,12 @@ Valdese::TextComponent::TextComponent(const std::string& text, Font* font)
 {
 }
 
+Valdese::TextComponent::~TextComponent()
+{
+	SafeDelete(m_pTexture);
+	SafeDelete(m_pFont);
+}
+
 void Valdese::TextComponent::Initialize()
 {
 }
@@ -39,6 +45,8 @@ void Valdese::TextComponent::Update(float elapsedSec)
 			throw std::runtime_error(std::string("Create text texture from surface failed: ") + SDL_GetError());
 		}
 		SDL_FreeSurface(surf);
+		SafeDelete(m_pTexture);
+
 		m_pTexture = new Texture2D(texture);
 		m_NeedsUpdate = false;
 	}

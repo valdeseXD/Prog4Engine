@@ -1,6 +1,7 @@
 #include "MiniginPCH.h"
 #include "Scene.h"
 #include "GameObject.h"
+#include "SceneObject.h"
 
 using namespace Valdese;
 
@@ -8,7 +9,13 @@ unsigned int Scene::m_IdCounter = 0;
 
 Scene::Scene(const std::string& name) : m_Name(name) {}
 
-Scene::~Scene() = default;
+Scene::~Scene()
+{
+	for (SceneObject* pObj : m_Objects)
+	{
+		SafeDelete(pObj);
+	}
+}
 
 void Valdese::Scene::Add(SceneObject& object)
 {

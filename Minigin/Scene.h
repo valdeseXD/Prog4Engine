@@ -14,7 +14,7 @@ namespace Valdese
 		virtual void Update(float elapsedSec);
 		void Render() const;
 
-		~Scene();
+		virtual ~Scene();
 		Scene(const Scene& other) = delete;
 		Scene(Scene&& other) = delete;
 		Scene& operator=(const Scene& other) = delete;

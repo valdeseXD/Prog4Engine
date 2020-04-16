@@ -7,10 +7,6 @@
 #include "FPSComponent.h"
 #include <string>
 
-//void Valdese::DemoScene::Add(SceneObject& object)
-//{
-//	UNREFERENCED_PARAMETER(object);
-//}
 
 void Valdese::DemoScene::Initialize()
 {
@@ -33,12 +29,14 @@ void Valdese::DemoScene::Initialize()
 	Add(*go);
 
 	go = new GameObject();
+	font = ResourceManager::GetInstance().LoadFont("Lingua.otf", 36);
 	textComp = new TextComponent("FPS: ", font);
 	go->AddComponent(textComp);
 	go->GetTransform()->SetPosition(0, 80);
 	Add(*go);
 
 	m_FPS = new GameObject();
+	font = ResourceManager::GetInstance().LoadFont("Lingua.otf", 36);
 	textComp = new TextComponent("0", font);
 	m_FPS->AddComponent(textComp);
 	m_FPS->AddComponent(new FPSComponent());
@@ -50,7 +48,10 @@ void Valdese::DemoScene::Initialize()
 void Valdese::DemoScene::Update(float elapsedSec)
 {
 	UNREFERENCED_PARAMETER(elapsedSec);
-	m_FPS->GetComponent<TextComponent>()->SetText(std::to_string(m_FPS->GetComponent<FPSComponent>()->GetFPS()));
+	if (m_FPS != nullptr)
+	{
+		m_FPS->GetComponent<TextComponent>()->SetText(std::to_string(m_FPS->GetComponent<FPSComponent>()->GetFPS()));
+	}
 
 	Scene::Update(elapsedSec);
 }
@@ -61,6 +62,7 @@ void Valdese::DemoScene::Render() const
 
 Valdese::DemoScene::~DemoScene()
 {
+	Scene::~Scene();
 }
 
 Valdese::DemoScene::DemoScene()

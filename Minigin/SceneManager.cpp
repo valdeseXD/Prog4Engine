@@ -18,6 +18,15 @@ void Valdese::SceneManager::Render()
 	}
 }
 
+Valdese::SceneManager::~SceneManager()
+{
+	for (auto scene : m_pScenes)
+	{
+		delete(scene);
+		scene = nullptr;
+	}
+}
+
 Valdese::Scene& Valdese::SceneManager::CreateScene(const std::string& name)
 {
 	const auto scene = new Scene(name);

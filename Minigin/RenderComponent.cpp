@@ -3,10 +3,17 @@
 #include "ResourceManager.h"
 #include "Renderer.h"
 #include "TransformComponent.h"
+#include "Texture2D.h"
 
 Valdese::RenderComponent::RenderComponent()
 	:m_pTexture()
 {
+}
+
+Valdese::RenderComponent::~RenderComponent()
+{
+
+	SafeDelete(m_pTexture);
 }
 
 void Valdese::RenderComponent::Initialize()

@@ -12,7 +12,7 @@ namespace Valdese
 	{
 	public:
 		TextComponent(const std::string& text, Font* font);
-		virtual ~TextComponent() = default;
+		virtual ~TextComponent();
 		TextComponent(const TextComponent& other) = delete;
 		TextComponent(TextComponent&& other) = delete;
 		TextComponent& operator=(const TextComponent& other) = delete;

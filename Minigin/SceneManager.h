@@ -14,6 +14,7 @@ namespace Valdese
 	private:
 		friend class Singleton<SceneManager>;
 		SceneManager() = default;
+		~SceneManager();
 		std::vector<Scene*> m_pScenes;
 	};
 }
