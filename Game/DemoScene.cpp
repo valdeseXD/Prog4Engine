@@ -6,18 +6,16 @@
 #include "TextComponent.h"
 #include "FPSComponent.h"
 #include <string>
-
+#include "BinaryReader.h"
 
 void Valdese::DemoScene::Initialize()
 {
 	GameObject* go = new GameObject();
-	go->AddComponent(new RenderComponent());
-	go->GetComponent<RenderComponent>()->SetTexture("background.jpg");
+	go->AddComponent(new RenderComponent("background.jpg"));
 	Add(*go);
 
 	go = new GameObject();
-	go->AddComponent(new RenderComponent());
-	go->GetComponent<RenderComponent>()->SetTexture("logo.png");
+	go->AddComponent(new RenderComponent("logo.png"));
 	go->GetTransform()->SetPosition(216, 180);
 	Add(*go);
 
@@ -43,11 +41,21 @@ void Valdese::DemoScene::Initialize()
 	m_FPS->GetTransform()->SetPosition(80, 80);
 	Add(*m_FPS);
 
+	m_pPlayer = new GameObject();
+	m_pPlayer->AddComponent(new RenderComponent("Character.png"));
+
+	
+	m_pLevels = BinaryReader::GetInstance().ReadLevelData();
+	for (int i = 0; i < m_pLevels.size(); i++)
+	{
+		m_pLevels[i]->SetActive(false);
+		Add(*m_pLevels[i]);
+	}
+	m_pLevels[0]->SetActive(true);
 }
 
 void Valdese::DemoScene::Update(float elapsedSec)
 {
-	UNREFERENCED_PARAMETER(elapsedSec);
 	if (m_FPS != nullptr)
 	{
 		m_FPS->GetComponent<TextComponent>()->SetText(std::to_string(m_FPS->GetComponent<FPSComponent>()->GetFPS()));

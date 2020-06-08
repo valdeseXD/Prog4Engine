@@ -17,6 +17,7 @@ namespace Valdese
 	public:
 		bool ProcessInput();
 		bool IsPressed(ControllerButton button) const;
+		bool IsPressed(char key) const;
 	private:
 		XINPUT_STATE m_CurrentState{};
 	};

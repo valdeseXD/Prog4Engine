@@ -4,6 +4,7 @@
 namespace Valdese
 {
 	class GameObject;
+	class LevelPrefab;
 	class DemoScene : public Scene
 	{
 	public:
@@ -21,6 +22,8 @@ namespace Valdese
 
 	private:
 		GameObject* m_FPS;
+		GameObject* m_pPlayer;
+		std::vector<GameObject*> m_pLevels;
 	};
 }
 

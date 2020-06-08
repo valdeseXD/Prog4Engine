@@ -40,3 +40,12 @@ bool Valdese::InputManager::IsPressed(ControllerButton button) const
 	}
 }
 
+bool Valdese::InputManager::IsPressed(char key) const
+{
+	//https://stackoverflow.com/questions/41600981/how-do-i-check-if-a-key-is-pressed-on-c
+	if (GetKeyState(key) & 0x8000/*Check if high-order bit is set (1 << 15)*/)
+	{
+		return true;
+	}
+	return false;
+}

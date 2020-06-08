@@ -20,9 +20,6 @@
     <Filter Include="SceneManagment">
       <UniqueIdentifier>{b6d61626-6ca0-4685-927c-6ca2f24d1adb}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Math">
-      <UniqueIdentifier>{1200feb5-a086-4261-82c2-b12037e86960}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Base">
       <UniqueIdentifier>{ab741c41-b3e1-4907-904c-8dd45dcca6ac}</UniqueIdentifier>
     </Filter>
@@ -70,9 +67,6 @@
     <ClInclude Include="Scene.h">
       <Filter>SceneManagment</Filter>
     </ClInclude>
-    <ClInclude Include="vector2.h">
-      <Filter>Math</Filter>
-    </ClInclude>
     <ClInclude Include="Singleton.h">
       <Filter>Base</Filter>
     </ClInclude>
@@ -81,6 +75,18 @@
     </ClInclude>
     <ClInclude Include="MiniginPCH.h">
       <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="BinaryReader.h">
+      <Filter>Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="ColliderComponent.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="ControllerComponent.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="InputComponent.h">
+      <Filter>Components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -123,14 +129,23 @@
     <ClCompile Include="Scene.cpp">
       <Filter>SceneManagment</Filter>
     </ClCompile>
-    <ClCompile Include="vector2.cpp">
-      <Filter>Math</Filter>
-    </ClCompile>
     <ClCompile Include="Minigin.cpp">
       <Filter>Base</Filter>
     </ClCompile>
     <ClCompile Include="MiniginPCH.cpp">
       <Filter>Base</Filter>
+    </ClCompile>
+    <ClCompile Include="BinaryReader.cpp">
+      <Filter>Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="ColliderComponent.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="ControllerComponent.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="InputComponent.cpp">
+      <Filter>Components</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

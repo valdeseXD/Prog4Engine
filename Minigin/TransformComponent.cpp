@@ -1,7 +1,7 @@
 #include "MiniginPCH.h"
 #include "TransformComponent.h"
 
-Valdese::TransformComponent::TransformComponent(math::vector2 position)
+Valdese::TransformComponent::TransformComponent(glm::vec2 position)
 	:m_Position(position)
 {
 }

@@ -1,11 +1,12 @@
 #pragma once
 #include "TransformComponent.h"
 #include "SceneObject.h"
+#include "Scene.h"
 
 namespace Valdese
 {
 	class Texture2D;
-	class GameObject : public SceneObject
+	class GameObject final : public SceneObject
 	{
 	public:
 		void Update(float elapsedSec) override;
@@ -21,8 +22,8 @@ namespace Valdese
 		GameObject& operator=(GameObject&& other) = delete;
 
 		TransformComponent* GetTransform() const { return m_pTransformComponent; }
-
-
+		void SetActive(bool active) { m_IsActive = active; }
+		bool IsActive() const { return m_IsActive; }
 		//COMPONENTS
 
 		void AddComponent(BaseComponent* pComp);
@@ -50,5 +51,6 @@ namespace Valdese
 		std::vector<BaseComponent*> m_pComponents;
 
 		TransformComponent* m_pTransformComponent;
+		bool m_IsActive;
 	};
 }

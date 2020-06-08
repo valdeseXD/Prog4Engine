@@ -8,6 +8,7 @@
 Valdese::GameObject::GameObject()
 {
 	m_pTransformComponent = new TransformComponent();
+	m_IsActive = true;
 }
 
 Valdese::GameObject::~GameObject()
@@ -19,7 +20,6 @@ Valdese::GameObject::~GameObject()
 	{
 		SafeDelete(pComp);
 	}
-
 }
 
 void Valdese::GameObject::AddComponent(BaseComponent* pComp)
@@ -50,17 +50,23 @@ void Valdese::GameObject::RemoveComponent(BaseComponent* pComp)
 
 void Valdese::GameObject::Update(float elapsedSec)
 {
-	for (BaseComponent* pComp : m_pComponents)
+	if (m_IsActive)
 	{
-		pComp->Update(elapsedSec);
+		for (BaseComponent* pComp : m_pComponents)
+		{
+			pComp->Update(elapsedSec);
+		}
 	}
 }
 
 void Valdese::GameObject::Draw() const
 {
-	for (BaseComponent* pComp : m_pComponents)
+	if (m_IsActive)
 	{
-		pComp->Draw();
+		for (BaseComponent* pComp : m_pComponents)
+		{
+			pComp->Draw();
+		}
 	}
 }
 

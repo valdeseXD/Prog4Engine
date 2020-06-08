@@ -1,17 +1,15 @@
 #pragma once
 #include "BaseComponent.h"
-
-
+#include <SDL_image.h>
 
 namespace Valdese
 {
 	class Texture2D;
-	class Font;
 
 	class RenderComponent : public BaseComponent
 	{
 	public:
-		RenderComponent();
+		RenderComponent(const std::string& filename);
 		virtual ~RenderComponent();
 		RenderComponent(const RenderComponent& other) = delete;
 		RenderComponent(RenderComponent&& other) = delete;
@@ -22,10 +20,12 @@ namespace Valdese
 		void Update(float elapsedSec);
 		void Draw();
 
-		void SetTexture(const std::string& filename);
 		void SetPosition(float x, float y);
+		void SetDestRect(SDL_Rect destRect) { m_DestRect = destRect; }
 	private:
 		Texture2D* m_pTexture;
+		SDL_Rect m_SourceRect;
+		SDL_Rect m_DestRect;
 	};
 }
 

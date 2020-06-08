@@ -15,6 +15,8 @@ void Valdese::Renderer::Init(SDL_Window * window)
 
 void Valdese::Renderer::Render() const
 {
+	const Uint8 r{ 0 }, g{ 0 }, b{ 0 }, a{ 0 };
+	SDL_SetRenderDrawColor(m_Renderer, r, g, b, a);
 	SDL_RenderClear(m_Renderer);
 
 	SceneManager::GetInstance().Render();
@@ -48,4 +50,9 @@ void Valdese::Renderer::RenderTexture(const Texture2D& texture, const float x, c
 	dst.w = static_cast<int>(width);
 	dst.h = static_cast<int>(height);
 	SDL_RenderCopy(GetSDLRenderer(), texture.GetSDLTexture(), nullptr, &dst);
+}
+
+void Valdese::Renderer::RenderTexture(const Texture2D& texture, const SDL_Rect& srcRect, const SDL_Rect& destRect) const
+{
+	SDL_RenderCopy(GetSDLRenderer(), texture.GetSDLTexture(), &srcRect, &destRect);
 }
