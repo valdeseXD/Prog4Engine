@@ -22,6 +22,6 @@ void Valdese::TransformComponent::Update(float elapsedSec)
 
 }
 
-void Valdese::TransformComponent::Draw()
+void Valdese::TransformComponent::Draw() const
 {
 }

@@ -46,8 +46,10 @@ void Valdese::Minigin::LoadGame() const
 	//auto& scene = SceneManager::GetInstance().CreateScene("Demo");
 	//SceneManager::GetInstance().AddScene(&scene);
 
+	Scene* pScene = new DemoScene();
 
-	SceneManager::GetInstance().AddScene(new DemoScene());
+	SceneManager::GetInstance().AddScene(pScene);
+	SceneManager::GetInstance().SetActiveScene(pScene);
 }
 
 void Valdese::Minigin::Cleanup()

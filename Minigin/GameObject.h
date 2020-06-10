@@ -1,4 +1,5 @@
 #pragma once
+#include "BaseComponent.h"
 #include "TransformComponent.h"
 #include "SceneObject.h"
 #include "Scene.h"
@@ -39,12 +40,26 @@ namespace Valdese
 		T* GetComponent()
 		{
 			const type_info& ti = typeid(T);
-			for (auto* component : m_pComponents)
+			for (auto component : m_pComponents)
 			{
 				if (component && typeid(*component) == ti)
 					return static_cast<T*>(component);
 			}
 			return nullptr;
+		}
+
+		template <class T>
+		std::vector<T*> GetComponents()
+		{
+			const type_info& ti = typeid(T);
+			std::vector<T*> components;
+
+			for (auto* component : m_pComponents)
+			{
+				if (component && typeid(*component) == ti)
+					components.push_back(static_cast<T*>(component));
+			}
+			return components;
 		}
 
 	private:

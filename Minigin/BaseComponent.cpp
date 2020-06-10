@@ -5,7 +5,6 @@
 Valdese::BaseComponent::BaseComponent()
 	: m_pGameObject(nullptr)
 {
-
 }
 
 Valdese::TransformComponent* Valdese::BaseComponent::GetTransform() const

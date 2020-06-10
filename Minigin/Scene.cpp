@@ -12,13 +12,13 @@ Scene::Scene(const std::string& name) : m_Name(name)
 
 Scene::~Scene()
 {
-	for (SceneObject* pObj : m_Objects)
+	for (GameObject* pObj : m_Objects)
 	{
 		SafeDelete(pObj);
 	}
 }
 
-void Valdese::Scene::Add(SceneObject& object)
+void Valdese::Scene::Add(GameObject& object)
 {
 	m_Objects.push_back(&object);
 }

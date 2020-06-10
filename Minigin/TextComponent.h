@@ -20,8 +20,8 @@ namespace Valdese
 
 
 		void Initialize();
-		void Update(float elapsedSec);
-		void Draw();
+		void Update(float elapsedSec) override;
+		void Draw() const override;
 		void SetText(const std::string& text);
 	private:
 		Texture2D* m_pTexture;

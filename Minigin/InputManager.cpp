@@ -1,7 +1,16 @@
 #include "MiniginPCH.h"
 #include "InputManager.h"
 #include <SDL.h>
+#include "Command.h"
 
+Valdese::InputManager::~InputManager()
+{
+	//https://stackoverflow.com/questions/19970531/properly-destroying-pointers-in-an-stdmap
+	for (std::map<char, Command*>::iterator itr = m_pCommands.begin(); itr != m_pCommands.end(); itr++)
+	{
+		delete (itr->second);
+	}
+}
 
 bool Valdese::InputManager::ProcessInput()
 {
@@ -40,12 +49,20 @@ bool Valdese::InputManager::IsPressed(ControllerButton button) const
 	}
 }
 
-bool Valdese::InputManager::IsPressed(char key) const
+bool Valdese::InputManager::IsPressed(char key, GameObject& actor)
 {
-	//https://stackoverflow.com/questions/41600981/how-do-i-check-if-a-key-is-pressed-on-c
-	if (GetKeyState(key) & 0x8000/*Check if high-order bit is set (1 << 15)*/)
+	//http://www.cplusplus.com/forum/beginner/140654/
+	if (GetAsyncKeyState(key) & 0x8000)
 	{
+		m_pCommands[key]->execute(actor);
 		return true;
 	}
 	return false;
+}
+
+void Valdese::InputManager::AddInputAction(char key, Command* command)
+{
+	m_pCommands[key] = command;
+
+
 }

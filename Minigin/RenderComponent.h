@@ -17,11 +17,15 @@ namespace Valdese
 		RenderComponent& operator=(RenderComponent&& other) = delete;
 
 		void Initialize();
-		void Update(float elapsedSec);
-		void Draw();
+		void Update(float elapsedSec) override;
+		void Draw() const override;
 
 		void SetPosition(float x, float y);
 		void SetDestRect(SDL_Rect destRect) { m_DestRect = destRect; }
+		void SetWidth(int width) { m_DestRect.w = width; }
+		void SetHeight(int height) { m_DestRect.h = height; }
+
+		SDL_Rect GetDestRect() { return m_DestRect; }
 	private:
 		Texture2D* m_pTexture;
 		SDL_Rect m_SourceRect;

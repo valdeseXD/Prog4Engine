@@ -7,6 +7,8 @@
 #include "FPSComponent.h"
 #include <string>
 #include "BinaryReader.h"
+#include "ControllerComponent.h"
+#include "ColliderComponent.h"
 
 void Valdese::DemoScene::Initialize()
 {
@@ -42,9 +44,15 @@ void Valdese::DemoScene::Initialize()
 	Add(*m_FPS);
 
 	m_pPlayer = new GameObject();
-	m_pPlayer->AddComponent(new RenderComponent("Character.png"));
+	auto playerModel = new RenderComponent("Character.png");
+	m_pPlayer->GetTransform()->SetPosition(50, 50);
+	playerModel->SetWidth(40);
+	playerModel->SetHeight(40);
+	m_pPlayer->AddComponent(playerModel);
+	m_pPlayer->AddComponent(new ColliderComponent());
+	m_pPlayer->AddComponent(new ControllerComponent('A', 'D', 'W', 'S', ' '));
+	Add(*m_pPlayer);
 
-	
 	m_pLevels = BinaryReader::GetInstance().ReadLevelData();
 	for (int i = 0; i < m_pLevels.size(); i++)
 	{

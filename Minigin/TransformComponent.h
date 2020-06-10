@@ -15,8 +15,8 @@ namespace Valdese
 		void SetPosition(float x, float y);
 
 		void Initialize();
-		void Update(float elapsedSec);
-		void Draw();
+		void Update(float elapsedSec) override;
+		void Draw() const override;
 
 	private:
 		glm::vec2 m_Position;

@@ -85,8 +85,8 @@
     <ClInclude Include="ControllerComponent.h">
       <Filter>Components</Filter>
     </ClInclude>
-    <ClInclude Include="InputComponent.h">
-      <Filter>Components</Filter>
+    <ClInclude Include="Command.h">
+      <Filter>Managers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -144,8 +144,8 @@
     <ClCompile Include="ControllerComponent.cpp">
       <Filter>Components</Filter>
     </ClCompile>
-    <ClCompile Include="InputComponent.cpp">
-      <Filter>Components</Filter>
+    <ClCompile Include="Command.cpp">
+      <Filter>Managers</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

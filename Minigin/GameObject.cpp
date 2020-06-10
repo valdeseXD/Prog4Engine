@@ -25,7 +25,8 @@ Valdese::GameObject::~GameObject()
 void Valdese::GameObject::AddComponent(BaseComponent* pComp)
 {
 	m_pComponents.push_back(pComp);
-	pComp->m_pGameObject = this;
+	pComp->SetGameObject(this);
+	pComp->Initialize();
 }
 
 void Valdese::GameObject::RemoveComponent(BaseComponent* pComp)
@@ -45,7 +46,7 @@ void Valdese::GameObject::RemoveComponent(BaseComponent* pComp)
 	}
 
 	m_pComponents.erase(componentToDelete);
-	pComp->m_pGameObject = nullptr;
+	pComp->SetGameObject(nullptr);
 }
 
 void Valdese::GameObject::Update(float elapsedSec)

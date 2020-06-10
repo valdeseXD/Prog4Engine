@@ -31,13 +31,18 @@ void Valdese::RenderComponent::Initialize()
 void Valdese::RenderComponent::Update(float elapsedSec)
 {
 	UNREFERENCED_PARAMETER(elapsedSec);
+
 }
 
-void Valdese::RenderComponent::Draw()
+void Valdese::RenderComponent::Draw() const
 {	
 	if (m_pTexture != nullptr)
 	{
-		Renderer::GetInstance().RenderTexture(*m_pTexture, m_SourceRect, m_DestRect);
+		SDL_Rect EndRect;
+		EndRect = m_DestRect;
+		EndRect.x += (int)GetTransform()->GetPosition().x;
+		EndRect.y += (int)GetTransform()->GetPosition().y;
+		Renderer::GetInstance().RenderTexture(*m_pTexture, m_SourceRect, EndRect);
 	}
 }
 

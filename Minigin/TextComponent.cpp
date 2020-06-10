@@ -52,7 +52,7 @@ void Valdese::TextComponent::Update(float elapsedSec)
 	}
 }
 
-void Valdese::TextComponent::Draw()
+void Valdese::TextComponent::Draw() const
 {
 	if (m_pTexture != nullptr)
 	{

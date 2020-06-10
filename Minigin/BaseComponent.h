@@ -5,9 +5,8 @@ namespace Valdese
 	class GameObject;
 	class TransformComponent;
 
-	class BaseComponent
+	class BaseComponent abstract
 	{
-		friend class GameObject;
 
 	public:
 		BaseComponent(const BaseComponent& other) = delete;
@@ -18,14 +17,14 @@ namespace Valdese
 		virtual ~BaseComponent() = default;
 
 		GameObject* GetGameObject() const { return m_pGameObject; }
+		void SetGameObject(GameObject* gameObject) { m_pGameObject = gameObject; }
 		TransformComponent* GetTransform() const;
 
 
-	protected:
-
 		virtual void Initialize() = 0;
 		virtual void Update(float elapsedSec) = 0;
-		virtual void Draw() = 0;
+		virtual void Draw() const = 0;
+	protected:
 
 		GameObject* m_pGameObject;
 	};
