@@ -88,6 +88,9 @@
     <ClInclude Include="Command.h">
       <Filter>Managers</Filter>
     </ClInclude>
+    <ClInclude Include="PlayerComponent.h">
+      <Filter>Components</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Texture2D.cpp">
@@ -146,6 +149,9 @@
     </ClCompile>
     <ClCompile Include="Command.cpp">
       <Filter>Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerComponent.cpp">
+      <Filter>Components</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

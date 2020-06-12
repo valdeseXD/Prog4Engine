@@ -3,6 +3,7 @@
 #include "TransformComponent.h"
 #include "SceneObject.h"
 #include "Scene.h"
+#include "ControllerComponent.h"
 
 namespace Valdese
 {

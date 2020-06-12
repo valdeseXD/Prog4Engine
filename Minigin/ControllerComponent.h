@@ -13,7 +13,7 @@ namespace Valdese
 		public BaseComponent
 	{
 		public:
-			ControllerComponent(char left = 0, char right = 0, char up = 0, char down = 0, char fire = 0);
+			ControllerComponent();
 			virtual ~ControllerComponent() = default;
 			ControllerComponent(const ControllerComponent& other) = delete;
 			ControllerComponent(ControllerComponent&& other) = delete;
@@ -26,7 +26,6 @@ namespace Valdese
 			void Draw() const override;
 			void DebugDraw() const override;
 
-			void HandleInput();
 
 			void Move(int x, int y);
 
@@ -44,7 +43,6 @@ namespace Valdese
 			TransformComponent* m_pTransform;
 			ColliderComponent* m_pCollider;
 			glm::vec2 m_Force;
-			char m_Left, m_Right, m_Up, m_Down, m_Fire;
 			bool m_GravityEnabled = true;
 			bool m_IsJumping = false;
 	};

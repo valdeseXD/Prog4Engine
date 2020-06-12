@@ -2,20 +2,14 @@
 #include "ControllerComponent.h"
 #include "TransformComponent.h"
 #include "InputManager.h"
-#include "Command.h"
 #include "ColliderComponent.h"
 
 #include "Renderer.h"
 #include "RenderComponent.h"
 
-Valdese::ControllerComponent::ControllerComponent(char left, char right, char up, char down, char fire)
+Valdese::ControllerComponent::ControllerComponent()
 	:m_pTransform(nullptr)
 	,m_pCollider(nullptr)
-	,m_Left(left)
-	,m_Right(right)
-	,m_Up(up)
-	,m_Down(down)
-	,m_Fire(fire)
 {
 
 }
@@ -28,11 +22,6 @@ void Valdese::ControllerComponent::Initialize()
 	{
 		std::cout << "No collider found in controllercomponent" << std::endl;
 	}
-	InputManager::GetInstance().AddInputAction(m_Left, new LeftCommand());
-	InputManager::GetInstance().AddInputAction(m_Right, new RightCommand());
-	InputManager::GetInstance().AddInputAction(m_Up, new JumpCommand());
-	InputManager::GetInstance().AddInputAction(m_Down, new DownCommand());
-	InputManager::GetInstance().AddInputAction(m_Fire, new FireCommand());
 }
 
 void Valdese::ControllerComponent::Update(float elapsedSec)
@@ -45,7 +34,6 @@ void Valdese::ControllerComponent::Update(float elapsedSec)
 
 	m_pCollider->SetBox(EndRect);
 
-	HandleInput();
 	if (m_GravityEnabled && m_Force.y < 100)
 	{
 		m_Force.y += 50.0f;
@@ -65,15 +53,6 @@ void Valdese::ControllerComponent::Draw() const
 
 void Valdese::ControllerComponent::DebugDraw() const
 {
-}
-
-void Valdese::ControllerComponent::HandleInput()
-{
-	InputManager::GetInstance().IsPressed(m_Left, *GetGameObject());
-	InputManager::GetInstance().IsPressed(m_Right, *GetGameObject());
-	InputManager::GetInstance().IsPressed(m_Up, *GetGameObject());
-	InputManager::GetInstance().IsPressed(m_Down, *GetGameObject());
-	InputManager::GetInstance().IsPressed(m_Fire, *GetGameObject());
 }
 
 void Valdese::ControllerComponent::Move(int x, int y)

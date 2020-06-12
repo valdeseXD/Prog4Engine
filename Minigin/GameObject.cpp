@@ -4,7 +4,6 @@
 #include "Renderer.h"
 #include "RenderComponent.h"
 
-
 Valdese::GameObject::GameObject()
 {
 	m_pTransformComponent = new TransformComponent();

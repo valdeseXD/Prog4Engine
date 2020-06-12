@@ -9,6 +9,7 @@
 #include "BinaryReader.h"
 #include "ControllerComponent.h"
 #include "ColliderComponent.h"
+#include "PlayerComponent.h"
 
 void Valdese::DemoScene::Initialize()
 {
@@ -50,7 +51,8 @@ void Valdese::DemoScene::Initialize()
 	playerModel->SetHeight(40);
 	m_pPlayer->AddComponent(playerModel);
 	m_pPlayer->AddComponent(new ColliderComponent());
-	m_pPlayer->AddComponent(new ControllerComponent('A', 'D', 'W', 'S', ' '));
+	m_pPlayer->AddComponent(new ControllerComponent());
+	m_pPlayer->AddComponent(new PlayerComponent('A', 'D', 'W', 'S', ' '));
 	Add(*m_pPlayer);
 
 	m_pLevels = BinaryReader::GetInstance().ReadLevelData();
