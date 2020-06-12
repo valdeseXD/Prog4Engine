@@ -9,12 +9,11 @@ Valdese::GameObject::GameObject()
 {
 	m_pTransformComponent = new TransformComponent();
 	m_IsActive = true;
+	m_pComponents.push_back(m_pTransformComponent);
 }
 
 Valdese::GameObject::~GameObject()
 {
-	delete m_pTransformComponent;
-	m_pTransformComponent = nullptr;
 
 	for (BaseComponent* pComp : m_pComponents)
 	{
@@ -67,6 +66,17 @@ void Valdese::GameObject::Draw() const
 		for (BaseComponent* pComp : m_pComponents)
 		{
 			pComp->Draw();
+		}
+	}
+}
+
+void Valdese::GameObject::DebugDraw() const
+{
+	if (m_IsActive)
+	{
+		for (BaseComponent* pComp : m_pComponents)
+		{
+			pComp->DebugDraw();
 		}
 	}
 }

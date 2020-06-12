@@ -45,7 +45,7 @@ void Valdese::DemoScene::Initialize()
 
 	m_pPlayer = new GameObject();
 	auto playerModel = new RenderComponent("Character.png");
-	m_pPlayer->GetTransform()->SetPosition(50, 50);
+	m_pPlayer->GetTransform()->SetPosition(100, 100);
 	playerModel->SetWidth(40);
 	playerModel->SetHeight(40);
 	m_pPlayer->AddComponent(playerModel);

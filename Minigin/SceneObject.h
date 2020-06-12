@@ -6,6 +6,7 @@ namespace Valdese
 	public:
 		virtual void Update(float elapsedSec) = 0;
 		virtual void Draw() const = 0;
+		virtual void DebugDraw() const = 0;
 
 		SceneObject() = default;
 		virtual ~SceneObject() = default;

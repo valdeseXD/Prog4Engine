@@ -19,6 +19,7 @@ namespace Valdese
 		void Initialize();
 		void Update(float elapsedSec) override;
 		void Draw() const override;
+		void DebugDraw() const override;
 
 		void SetPosition(float x, float y);
 		void SetDestRect(SDL_Rect destRect) { m_DestRect = destRect; }

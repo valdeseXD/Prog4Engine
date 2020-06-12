@@ -9,7 +9,10 @@ void Valdese::FPSComponent::Update(float elapsedSec)
 {
 	m_FPS = (int)((1/ elapsedSec));
 }
-
 void Valdese::FPSComponent::Draw() const
+{
+}
+
+void Valdese::FPSComponent::DebugDraw() const
 {
 }

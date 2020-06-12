@@ -17,6 +17,7 @@ namespace Valdese
 		void Initialize();
 		void Update(float elapsedSec) override;
 		void Draw() const override;
+		void DebugDraw() const override;
 
 		int GetFPS() { return m_FPS; }
 	private:

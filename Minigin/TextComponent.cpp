@@ -61,6 +61,10 @@ void Valdese::TextComponent::Draw() const
 	}
 }
 
+void Valdese::TextComponent::DebugDraw() const
+{
+}
+
 void Valdese::TextComponent::SetText(const std::string& text)
 {
 	m_Text = text;

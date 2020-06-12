@@ -24,6 +24,7 @@ namespace Valdese
 		virtual void Initialize() = 0;
 		virtual void Update(float elapsedSec) = 0;
 		virtual void Draw() const = 0;
+		virtual void DebugDraw() const = 0;
 	protected:
 
 		GameObject* m_pGameObject;

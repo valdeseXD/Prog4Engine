@@ -36,6 +36,10 @@ void Scene::Render() const
 	for (const auto& object : m_Objects)
 	{
 		object->Draw();
+#ifdef _DEBUG
+		object->DebugDraw();
+#endif // DEBUG
+
 	}
 }
 

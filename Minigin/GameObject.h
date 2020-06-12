@@ -12,6 +12,7 @@ namespace Valdese
 	public:
 		void Update(float elapsedSec) override;
 		void Draw() const override;
+		void DebugDraw() const override;
 
 		void SetPosition(float x, float y);
 

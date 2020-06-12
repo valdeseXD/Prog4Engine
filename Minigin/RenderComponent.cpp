@@ -46,6 +46,10 @@ void Valdese::RenderComponent::Draw() const
 	}
 }
 
+void Valdese::RenderComponent::DebugDraw() const
+{
+}
+
 void Valdese::RenderComponent::SetPosition(const float x, const float y)
 {
 	m_DestRect.x = (int)x;
