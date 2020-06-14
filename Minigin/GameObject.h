@@ -27,6 +27,9 @@ namespace Valdese
 		TransformComponent* GetTransform() const { return m_pTransformComponent; }
 		void SetActive(bool active) { m_IsActive = active; }
 		bool IsActive() const { return m_IsActive; }
+
+		void SetDeleted(bool b) { m_IsDeleted = b; }
+		bool IsDeleted() const { return m_IsDeleted; }
 		//COMPONENTS
 
 		void AddComponent(BaseComponent* pComp);
@@ -69,5 +72,7 @@ namespace Valdese
 
 		TransformComponent* m_pTransformComponent;
 		bool m_IsActive;
+
+		bool m_IsDeleted = false;
 	};
 }

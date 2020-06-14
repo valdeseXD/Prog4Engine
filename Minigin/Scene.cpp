@@ -39,10 +39,13 @@ void Valdese::Scene::Remove(GameObject* pObject)
 
 void Scene::Update(float elapsedSec)
 {
-	//for(auto& object : m_Objects)
-	//{
-	//	object->Update(elapsedSec);
-	//}
+	for (UINT i = 0; i < m_Objects.size(); i++)
+	{
+		if (m_Objects[i]->IsDeleted())
+		{
+			Remove(m_Objects[i]);
+		}
+	}
 
 	for (UINT i = 0; i < m_Objects.size(); i++)
 	{

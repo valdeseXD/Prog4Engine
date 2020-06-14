@@ -134,8 +134,8 @@ void Valdese::ControllerComponent::CheckCollision()
 				Side otherColliderSide = otherColliders[i]->GetGameObject()->GetComponent<ControllerComponent>()->GetSide();
 				if (otherColliderSide == Side::Enemy && m_pCollider->GetColliderState() == ColliderState::Bubble)
 				{
-					SceneManager::GetInstance().GetActiveScene()->Remove(otherColliders[i]->GetGameObject());
-					SceneManager::GetInstance().GetActiveScene()->Remove(GetGameObject());
+					GetGameObject()->SetDeleted(true);
+					otherColliders[i]->GetGameObject()->SetDeleted(true);
 				}
 				if (otherColliderSide != m_Side)
 				{
