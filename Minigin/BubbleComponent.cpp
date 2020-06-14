@@ -3,6 +3,11 @@
 #include "GameObject.h"
 #include "ControllerComponent.h"
 
+Valdese::BubbleComponent::BubbleComponent(glm::vec2 bubbleForce)
+	:m_BubbleForce(bubbleForce)
+{
+}
+
 void Valdese::BubbleComponent::Initialize()
 {
 	m_pController = GetGameObject()->GetComponent<ControllerComponent>();
@@ -11,7 +16,6 @@ void Valdese::BubbleComponent::Initialize()
 		std::cout << "No controller attached to Bubble" << std::endl;
 	}
 	m_pController->SetGravity(false);
-	m_BubbleForce = { 500, -20 };
 }
 
 void Valdese::BubbleComponent::Update(float elapsedSec)

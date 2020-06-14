@@ -7,6 +7,7 @@ void Valdese::LeftCommand::execute(GameObject& gameObject)
 	ControllerComponent* controller = gameObject.GetComponent<ControllerComponent>();
 	if (controller != nullptr)
 	{
+		controller->SetFacingLeft(true);
 		controller->AddForce({ -100.0f, 0.0f });
 	}
 }
@@ -16,6 +17,7 @@ void Valdese::RightCommand::execute(GameObject& gameObject)
 	ControllerComponent* controller = gameObject.GetComponent<ControllerComponent>();
 	if (controller != nullptr)
 	{
+		controller->SetFacingLeft(false);
 		controller->AddForce({ 100.0f, 0.0f });
 	}
 }

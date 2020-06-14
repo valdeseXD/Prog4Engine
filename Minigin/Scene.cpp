@@ -44,7 +44,7 @@ void Scene::Update(float elapsedSec)
 	//	object->Update(elapsedSec);
 	//}
 
-	for (int i = 0; i < m_Objects.size(); i++)
+	for (UINT i = 0; i < m_Objects.size(); i++)
 	{
 		m_Objects[i]->Update(elapsedSec);
 	}

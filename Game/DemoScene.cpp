@@ -13,27 +13,27 @@
 
 void Valdese::DemoScene::Initialize()
 {
-	GameObject* go = new GameObject();
-	go->AddComponent(new RenderComponent("background.jpg"));
-	Add(*go);
+	//GameObject* go = new GameObject();
+	//go->AddComponent(new RenderComponent("background.jpg"));
+	//Add(*go);
 
-	go = new GameObject();
-	go->AddComponent(new RenderComponent("logo.png"));
-	go->GetTransform()->SetPosition(216, 180);
-	Add(*go);
+	//go = new GameObject();
+	//go->AddComponent(new RenderComponent("logo.png"));
+	//go->GetTransform()->SetPosition(216, 180);
+	//Add(*go);
 
-	go = new GameObject();
+	//go = new GameObject();
+	//auto font = ResourceManager::GetInstance().LoadFont("Lingua.otf", 36);
+	//auto textComp = new TextComponent("Programming 4 Assignment", font);
+	//go->AddComponent(textComp);
+	//go->GetTransform()->SetPosition(80, 20);
+	//Add(*go);
+
+	GameObject*  go = new GameObject();
 	auto font = ResourceManager::GetInstance().LoadFont("Lingua.otf", 36);
-	auto textComp = new TextComponent("Programming 4 Assignment", font);
+	auto textComp = new TextComponent("FPS: ", font);
 	go->AddComponent(textComp);
-	go->GetTransform()->SetPosition(80, 20);
-	Add(*go);
-
-	go = new GameObject();
-	font = ResourceManager::GetInstance().LoadFont("Lingua.otf", 36);
-	textComp = new TextComponent("FPS: ", font);
-	go->AddComponent(textComp);
-	go->GetTransform()->SetPosition(0, 80);
+	go->GetTransform()->SetPosition(40, 40);
 	Add(*go);
 
 	m_FPS = new GameObject();
@@ -41,7 +41,7 @@ void Valdese::DemoScene::Initialize()
 	textComp = new TextComponent("0", font);
 	m_FPS->AddComponent(textComp);
 	m_FPS->AddComponent(new FPSComponent());
-	m_FPS->GetTransform()->SetPosition(80, 80);
+	m_FPS->GetTransform()->SetPosition(120, 40);
 	Add(*m_FPS);
 
 	m_pPlayer = new GameObject();
@@ -67,7 +67,7 @@ void Valdese::DemoScene::Initialize()
 	Add(*enemy);
 
 	m_pLevels = BinaryReader::GetInstance().ReadLevelData();
-	for (int i = 0; i < m_pLevels.size(); i++)
+	for (UINT i = 0; i < m_pLevels.size(); i++)
 	{
 		m_pLevels[i]->SetActive(false);
 		Add(*m_pLevels[i]);

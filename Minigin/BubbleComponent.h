@@ -11,7 +11,7 @@ namespace Valdese
 	class BubbleComponent : public BaseComponent
 	{
 	public:
-		BubbleComponent() = default;
+		BubbleComponent(glm::vec2 bubbleForce);
 		virtual ~BubbleComponent() = default;
 		BubbleComponent(const BubbleComponent& other) = delete;
 		BubbleComponent(BubbleComponent&& other) = delete;
@@ -28,7 +28,7 @@ namespace Valdese
 		ControllerComponent* m_pController = nullptr;
 
 		glm::vec2 m_BubbleForce;
-		float m_ShootTime = 5.0f;
+		float m_ShootTime = 4.0f;
 		float m_LifeTime = 15.0f;
 	};
 }

@@ -82,12 +82,12 @@ void Valdese::ControllerComponent::CheckCollision()
 {
 	std::vector<ColliderComponent*> otherColliders;
 	std::vector<GameObject*> gameObjects = SceneManager::GetInstance().GetActiveScene()->GetObjects();
-	for (int object = 0; object < gameObjects.size(); object++)
+	for (UINT object = 0; object < gameObjects.size(); object++)
 	{
 		if (gameObjects[object]->IsActive())
 		{
 			std::vector<ColliderComponent*> collidersInObject = gameObjects[object]->GetComponents<ColliderComponent>();
-			for (int i = 0; i < collidersInObject.size(); i++)
+			for (UINT i = 0; i < collidersInObject.size(); i++)
 			{
 				if (collidersInObject[i] != m_pCollider)
 				{
@@ -98,7 +98,7 @@ void Valdese::ControllerComponent::CheckCollision()
 	}
 
 	int offset = 2;
-	for (int i = 0; i < otherColliders.size(); i++)
+	for (UINT i = 0; i < otherColliders.size(); i++)
 	{
 		if (m_pCollider->IsColliding(otherColliders[i]->GetBox()))
 		{
@@ -132,6 +132,11 @@ void Valdese::ControllerComponent::CheckCollision()
 			else
 			{
 				Side otherColliderSide = otherColliders[i]->GetGameObject()->GetComponent<ControllerComponent>()->GetSide();
+				if (otherColliderSide == Side::Enemy && m_pCollider->GetColliderState() == ColliderState::Bubble)
+				{
+					SceneManager::GetInstance().GetActiveScene()->Remove(otherColliders[i]->GetGameObject());
+					SceneManager::GetInstance().GetActiveScene()->Remove(GetGameObject());
+				}
 				if (otherColliderSide != m_Side)
 				{
 					std::cout << "enemy hit" << std::endl;
@@ -157,11 +162,19 @@ void Valdese::ControllerComponent::Fire()
  	if (m_ElapsedFireCooldown <= 0)
 	{
 		GameObject* bubble = new GameObject();
-		bubble->GetTransform()->SetPosition(m_pTransform->GetPosition().x + 5, m_pTransform->GetPosition().y);
+		bubble->GetTransform()->SetPosition(m_pTransform->GetPosition().x + 5, m_pTransform->GetPosition().y - 5);
 		bubble->AddComponent(new RenderComponent("Bubble.png"));
 		bubble->AddComponent(new ColliderComponent(ColliderState::Bubble));
 		bubble->AddComponent(new ControllerComponent(Side::Player));
-		bubble->AddComponent(new BubbleComponent());
+		int bubbleUpForce = -15;
+		if (m_FacingLeft)
+		{
+			bubble->AddComponent(new BubbleComponent({ -500, bubbleUpForce }));
+		}
+		else
+		{
+			bubble->AddComponent(new BubbleComponent({ 500, bubbleUpForce }));
+		}
 		SceneManager::GetInstance().GetActiveScene()->Add(*bubble);
 		m_ElapsedFireCooldown = m_FireCooldown;
 	}              

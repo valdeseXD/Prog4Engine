@@ -50,6 +50,8 @@ namespace Valdese
 			void Fire();
 
 			Side GetSide() { return m_Side; }
+
+			void SetFacingLeft(bool b) { m_FacingLeft = b; }
 		private:
 			TransformComponent* m_pTransform;
 			ColliderComponent* m_pCollider;
@@ -60,6 +62,8 @@ namespace Valdese
 
 			float m_FireCooldown = 2.0f;
 			float m_ElapsedFireCooldown = 0.0f;
+
+			bool m_FacingLeft = false;
 	};
 }
 
