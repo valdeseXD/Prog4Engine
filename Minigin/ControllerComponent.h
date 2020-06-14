@@ -7,13 +7,20 @@
 
 namespace Valdese
 {
+
+	enum class Side
+	{
+		Player,
+		Enemy,
+		EnemyVulnerable
+	};
 	class TransformComponent;
 	class ColliderComponent;
 	class ControllerComponent :
 		public BaseComponent
 	{
 		public:
-			ControllerComponent();
+			ControllerComponent(Side side);
 			virtual ~ControllerComponent() = default;
 			ControllerComponent(const ControllerComponent& other) = delete;
 			ControllerComponent(ControllerComponent&& other) = delete;
@@ -39,12 +46,20 @@ namespace Valdese
 
 			void Jump();
 			void SetJumping(bool b) { m_IsJumping = b; }
+
+			void Fire();
+
+			Side GetSide() { return m_Side; }
 		private:
 			TransformComponent* m_pTransform;
 			ColliderComponent* m_pCollider;
 			glm::vec2 m_Force;
 			bool m_GravityEnabled = true;
 			bool m_IsJumping = false;
+			Side m_Side;
+
+			float m_FireCooldown = 2.0f;
+			float m_ElapsedFireCooldown = 0.0f;
 	};
 }
 

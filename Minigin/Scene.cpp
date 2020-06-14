@@ -23,11 +23,30 @@ void Valdese::Scene::Add(GameObject& object)
 	m_Objects.push_back(&object);
 }
 
+void Valdese::Scene::Remove(GameObject* pObject)
+{
+	auto objectToDelete = find(m_Objects.begin(), m_Objects.end(), pObject);
+
+	if (objectToDelete == m_Objects.end())
+	{
+		std::cout << "this gameObject is not in the scene" << std::endl;
+		return;
+	}
+	
+	m_Objects.erase(objectToDelete);
+	SafeDelete(pObject);
+}
+
 void Scene::Update(float elapsedSec)
 {
-	for(auto& object : m_Objects)
+	//for(auto& object : m_Objects)
+	//{
+	//	object->Update(elapsedSec);
+	//}
+
+	for (int i = 0; i < m_Objects.size(); i++)
 	{
-		object->Update(elapsedSec);
+		m_Objects[i]->Update(elapsedSec);
 	}
 }
 

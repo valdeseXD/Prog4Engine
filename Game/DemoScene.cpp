@@ -50,10 +50,21 @@ void Valdese::DemoScene::Initialize()
 	playerModel->SetWidth(40);
 	playerModel->SetHeight(40);
 	m_pPlayer->AddComponent(playerModel);
-	m_pPlayer->AddComponent(new ColliderComponent());
-	m_pPlayer->AddComponent(new ControllerComponent());
+	m_pPlayer->AddComponent(new ColliderComponent(ColliderState::Character));
+	m_pPlayer->AddComponent(new ControllerComponent(Side::Player));
 	m_pPlayer->AddComponent(new PlayerComponent('A', 'D', 'W', 'S', ' '));
 	Add(*m_pPlayer);
+
+
+	auto enemy = new GameObject();
+	auto enemyModel = new RenderComponent("Zen-chan.png");
+	enemy->GetTransform()->SetPosition(200, 100);
+	enemyModel->SetWidth(40);
+	enemyModel->SetHeight(40);
+	enemy->AddComponent(enemyModel);
+	enemy->AddComponent(new ColliderComponent(ColliderState::Character));
+	enemy->AddComponent(new ControllerComponent(Side::Enemy));
+	Add(*enemy);
 
 	m_pLevels = BinaryReader::GetInstance().ReadLevelData();
 	for (int i = 0; i < m_pLevels.size(); i++)

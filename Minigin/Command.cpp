@@ -41,5 +41,9 @@ void Valdese::DownCommand::execute(GameObject& gameObject)
 
 void Valdese::FireCommand::execute(GameObject& gameObject)
 {
-	UNREFERENCED_PARAMETER(gameObject);
+	ControllerComponent* controller = gameObject.GetComponent<ControllerComponent>();
+	if (controller != nullptr)
+	{
+		controller->Fire();
+	}
 }

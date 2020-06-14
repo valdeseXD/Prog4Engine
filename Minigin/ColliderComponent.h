@@ -8,19 +8,17 @@
 
 namespace Valdese
 {
-	enum class CollisionSide
+	enum class ColliderState
 	{
-		Top,
-		Bottom,
-		Left,
-		Right,
-		None
+		Static,
+		Character,
+		Bubble
 	};
 	class ColliderComponent :
 		public BaseComponent
 	{
 	public:
-		ColliderComponent() = default;
+		ColliderComponent(ColliderState colliderState = ColliderState::Static);
 		virtual ~ColliderComponent() = default;
 		ColliderComponent(const ColliderComponent& other) = delete;
 		ColliderComponent(ColliderComponent&& other) = delete;
@@ -39,16 +37,13 @@ namespace Valdese
 		bool IsLeftCollision(SDL_Rect otherCollider);
 		bool IsRightCollision(SDL_Rect otherCollider);
 
-		void CheckCollisionSide(SDL_Rect otherBox);
 		void SetBox(SDL_Rect box);
 		void UpdateBox(int x, int y, int width = 0, int height = 0);
+
+		ColliderState GetColliderState() { return m_ColliderState; }
 	private:
 		SDL_Rect m_Box = {0, 0, 0, 0};
-		CollisionSide m_VerticalCollisionSide;
-		CollisionSide m_HorizontalCollisionSide;
-
-		SDL_Rect m_BoxCollision;
-		int m_HorizontalCollisionDifference = 0;
+		ColliderState m_ColliderState;
 	};
 
 }

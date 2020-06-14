@@ -3,13 +3,15 @@
 #include "TransformComponent.h"
 #include "InputManager.h"
 #include "ColliderComponent.h"
+#include "BubbleComponent.h"
 
 #include "Renderer.h"
 #include "RenderComponent.h"
 
-Valdese::ControllerComponent::ControllerComponent()
+Valdese::ControllerComponent::ControllerComponent(Side side)
 	:m_pTransform(nullptr)
 	,m_pCollider(nullptr)
+	,m_Side(side)
 {
 
 }
@@ -43,6 +45,11 @@ void Valdese::ControllerComponent::Update(float elapsedSec)
 		m_pTransform->SetPosition(m_pTransform->GetPosition().x + m_Force.x * elapsedSec, m_pTransform->GetPosition().y + m_Force.y * elapsedSec);
 		CheckCollision();
 		m_Force.x = 0;
+	}
+
+	if (m_ElapsedFireCooldown > 0)
+	{
+		m_ElapsedFireCooldown -= elapsedSec;
 	}
 }
 
@@ -95,30 +102,41 @@ void Valdese::ControllerComponent::CheckCollision()
 	{
 		if (m_pCollider->IsColliding(otherColliders[i]->GetBox()))
 		{
-			if (m_pCollider->IsTopCollision(otherColliders[i]->GetBox()))
+			//Check if collision is between controller - block or bubble - bubble
+			if (otherColliders[i]->GetColliderState() == ColliderState::Static || (m_pCollider->GetColliderState() == ColliderState::Bubble && otherColliders[i]->GetColliderState() == ColliderState::Bubble))
 			{
-				Move(0, -offset);
-				m_IsJumping = false;
-
-				//Recheck if there is still collision after moving the character up
-				if (m_pCollider->IsColliding(otherColliders[i]->GetBox()))
+				if (m_pCollider->IsTopCollision(otherColliders[i]->GetBox()))
 				{
-					auto prevPos = m_pTransform->GetPrevPosition();
-					if (m_pCollider->IsLeftCollision(otherColliders[i]->GetBox()))
+					Move(0, -offset);
+					m_IsJumping = false;
+
+					//Recheck if there is still collision after moving the character up
+					if (m_pCollider->IsColliding(otherColliders[i]->GetBox()))
 					{
-						Move(offset, 0);
-					}
-					if (m_pCollider->IsRightCollision(otherColliders[i]->GetBox()))
-					{
-						Move(-offset, 0);
+						auto prevPos = m_pTransform->GetPrevPosition();
+						if (m_pCollider->IsLeftCollision(otherColliders[i]->GetBox()))
+						{
+							Move(offset, 0);
+						}
+						if (m_pCollider->IsRightCollision(otherColliders[i]->GetBox()))
+						{
+							Move(-offset, 0);
+						}
 					}
 				}
+				if (m_pTransform->GetPosition().y < 0)
+				{
+					m_pTransform->SetPosition(m_pTransform->GetPosition().x, 50);
+				}
 			}
-			if (m_pTransform->GetPosition().y < 0)
+			else
 			{
-				m_pTransform->SetPosition(m_pTransform->GetPosition().x, 50);
+				Side otherColliderSide = otherColliders[i]->GetGameObject()->GetComponent<ControllerComponent>()->GetSide();
+				if (otherColliderSide != m_Side)
+				{
+					std::cout << "enemy hit" << std::endl;
+				}
 			}
-
 		}
 	}
 	m_pCollider->CheckCollision();
@@ -132,5 +150,19 @@ void Valdese::ControllerComponent::Jump()
 		m_Force.y = -600;
 		m_IsJumping = true;
 	}
+}
 
+void Valdese::ControllerComponent::Fire()
+{
+ 	if (m_ElapsedFireCooldown <= 0)
+	{
+		GameObject* bubble = new GameObject();
+		bubble->GetTransform()->SetPosition(m_pTransform->GetPosition().x + 5, m_pTransform->GetPosition().y);
+		bubble->AddComponent(new RenderComponent("Bubble.png"));
+		bubble->AddComponent(new ColliderComponent(ColliderState::Bubble));
+		bubble->AddComponent(new ControllerComponent(Side::Player));
+		bubble->AddComponent(new BubbleComponent());
+		SceneManager::GetInstance().GetActiveScene()->Add(*bubble);
+		m_ElapsedFireCooldown = m_FireCooldown;
+	}              
 }

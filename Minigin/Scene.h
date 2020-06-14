@@ -9,7 +9,7 @@ namespace Valdese
 		friend Scene& SceneManager::CreateScene(const std::string& name);
 	public:
 		void Add(GameObject& object);
-
+		void Remove(GameObject* pObject);
 
 		virtual void Update(float elapsedSec);
 		void Render() const;

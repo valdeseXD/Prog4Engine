@@ -91,6 +91,9 @@
     <ClInclude Include="PlayerComponent.h">
       <Filter>Components</Filter>
     </ClInclude>
+    <ClInclude Include="BubbleComponent.h">
+      <Filter>Components</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Texture2D.cpp">
@@ -151,6 +154,9 @@
       <Filter>Managers</Filter>
     </ClCompile>
     <ClCompile Include="PlayerComponent.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="BubbleComponent.cpp">
       <Filter>Components</Filter>
     </ClCompile>
   </ItemGroup>

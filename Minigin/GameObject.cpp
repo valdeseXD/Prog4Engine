@@ -13,7 +13,6 @@ Valdese::GameObject::GameObject()
 
 Valdese::GameObject::~GameObject()
 {
-
 	for (BaseComponent* pComp : m_pComponents)
 	{
 		SafeDelete(pComp);

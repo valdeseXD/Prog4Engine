@@ -8,6 +8,12 @@
 #include "ControllerComponent.h"
 #include "Renderer.h"
 
+Valdese::ColliderComponent::ColliderComponent(ColliderState colliderState)
+    :m_ColliderState(colliderState)
+{
+
+}
+
 void Valdese::ColliderComponent::Initialize()
 {
     m_Box = GetGameObject()->GetComponent<RenderComponent>()->GetDestRect();
@@ -79,11 +85,6 @@ bool Valdese::ColliderComponent::IsRightCollision(SDL_Rect otherCollider)
         return true;
     }
     return false;
-}
-
-void Valdese::ColliderComponent::CheckCollisionSide(SDL_Rect otherbox)
-{
-    UNREFERENCED_PARAMETER(otherbox);
 }
 
 void Valdese::ColliderComponent::SetBox(SDL_Rect box)
